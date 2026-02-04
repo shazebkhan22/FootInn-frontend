@@ -1,0 +1,16 @@
+import { LoginForm } from "@/components/login-form"
+
+export const metadata = {
+    title: "Login | FootInn",
+    description: "Login to your account to access your dashboard and manage your settings.",
+}
+
+export default function LoginPage() {
+  return (
+    <div className="bg-teal-50 flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+      <div className="w-full max-w-sm md:max-w-4xl">
+        <LoginForm />
+      </div>
+    </div>
+  )
+}
