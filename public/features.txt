@@ -1,0 +1,6 @@
+Features to implement:
+
+1. OAuth 2.0
+2. Redis
+3. multiple turf for turf_admin
+4. types of sports

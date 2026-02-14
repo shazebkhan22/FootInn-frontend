@@ -49,17 +49,17 @@ const DesktopfeatureCard: React.FC<{ card: FeatureCardData }> = ({ card }) => (
     <div className="mb-3">
       <div
         className={`w-full h-32 ${
-          card.linear || "bg-linear-to-r from-emerald-400 to-emerald-500"
+          card.linear || "bg-linear-to-r from-red-400 to-red-500"
         } rounded-md flex items-center justify-center text-4xl text-white transition-all duration-300`}
       >
         {card.icon || "⭐"}
       </div>
     </div>
     <div className="flex flex-col gap-1">
-      <div className="font-medium text-base group-hover:text-emerald-800 leading-tight">
+      <div className="font-medium text-base group-hover:text-red-800 leading-tight">
         {card.title}
       </div>
-      <div className="text-sm text-neutral-600 group-hover:text-emerald-700 transition">
+      <div className="text-sm text-neutral-600 group-hover:text-red-700 transition">
         {card.description || "Learn more →"}
       </div>
     </div>
@@ -83,10 +83,10 @@ const DesktopDropdownItem: React.FC<{
       {item.icon}
     </div>
     <div className="flex-1">
-      <p className="text-base font-medium transition-colors group-hover:text-emerald-800">
+      <p className="text-base font-medium transition-colors group-hover:text-red-800">
         {item.title}
       </p>
-      <p className="text-sm text-neutral-600 transition-colors group-hover:text-emerald-700">
+      <p className="text-sm text-neutral-600 transition-colors group-hover:text-red-700">
         {item.description}
       </p>
     </div>
@@ -124,7 +124,7 @@ const GenericDesktopDropdown: React.FC<{ navItem: NavItem }> = ({ navItem }) => 
         title: hoveredItem.title,
         description: hoveredItem.description,
         link: hoveredItem.link,
-        linear: "bg-linear-to-r from-teal-200 to-emerald-400",
+        linear: "bg-linear-to-r from-teal-200 to-red-400",
         icon: hoveredItem.icon,
       };
     }
@@ -205,7 +205,7 @@ const ContactButton: React.FC<{ mobile: boolean; onClick?: () => void; isScrolle
     return (
       <a
         href="/contact"
-        className="mx-4 mt-4 px-4 py-3 text-center font-mono rounded-full bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition-all"
+        className="mx-4 mt-4 px-4 py-3 text-center font-mono rounded-full bg-red-600 text-white font-medium hover:bg-red-700 transition-all"
         onClick={onClick}
       >
         Contact
@@ -216,7 +216,7 @@ const ContactButton: React.FC<{ mobile: boolean; onClick?: () => void; isScrolle
   const desktopClasses = `hidden md:flex items-center px-4 py-1.5 rounded-full transition-all font-medium font-mono ml-2 
         ${
           isScrolled
-            ? "bg-emerald-500 text-white border-emerald-400 hover:bg-emerald-700"
+            ? "bg-red-500 text-white border-red-400 hover:bg-red-700"
             : "border border-black/10 hover:bg-black/5"
         }`;
 
@@ -242,7 +242,7 @@ const MobileDropdown: React.FC<{
   const MobileDropdownItem: React.FC<{ item: DropdownContentItem }> = ({ item }) => (
     <a
       href={item.link}
-      className="flex gap-3 items-center p-3 rounded-lg hover:bg-emerald-200 transition-colors group"
+      className="flex gap-3 items-center p-3 rounded-lg hover:bg-red-200 transition-colors group"
       onClick={() => setMobileMenuOpen(false)}
     >
       <div
@@ -251,8 +251,8 @@ const MobileDropdown: React.FC<{
         {item.icon}
       </div>
       <div>
-        <p className="font-medium text-sm group-hover:text-emerald-800">{item.title}</p>
-        <p className="text-sm text-neutral-600 group-hover:text-emerald-800">
+        <p className="font-medium text-sm group-hover:text-red-800">{item.title}</p>
+        <p className="text-sm text-neutral-600 group-hover:text-red-800">
           {item.description}
         </p>
       </div>
@@ -366,12 +366,12 @@ export default function Navbar() {
       dropdownContent: [
         { title: "Retail", description: "Enhance store operations and predict consumer demand.", icon: "🛒", color: "bg-green-100", link: "/industries/retail" },
         { title: "CPG", description: "Optimize supply chains and manage fast-moving goods.", icon: "📦", color: "bg-orange-100", link: "/industries/cpg" },
-        { title: "Media", description: "Personalize user feeds and analyze audience engagement.", icon: "🎬", color: "bg-emerald-100", link: "/industries/media" },
+        { title: "Media", description: "Personalize user feeds and analyze audience engagement.", icon: "🎬", color: "bg-red-100", link: "/industries/media" },
         { title: "Telecom & Tech", description: "Improve network performance and automate customer support.", icon: "📡", color: "bg-indigo-100", link: "/industries/telecom-tech" },
         { title: "Manufacturing", description: "Enable predictive maintenance and ensure quality control.", icon: "⚙️", color: "bg-yellow-100", link: "/industries/manufacturing" },
         { title: "Energy", description: "Optimize consumption and distribution with smart grids.", link: "/industries/energy", color: "bg-pink-100", icon: "💡" }
       ],
-      featureCard: { title: "Retail", description: "Enhance store operations and predict consumer demand.", link: "/industries/retail", linear: "bg-linear-to-r from-emerald-200 to-emerald-400", icon: "🛒" },
+      featureCard: { title: "Retail", description: "Enhance store operations and predict consumer demand.", link: "/industries/retail", linear: "bg-linear-to-r from-red-200 to-red-400", icon: "🛒" },
     },
     {
       name: "Horizontals",
@@ -382,7 +382,7 @@ export default function Navbar() {
         { title: "AI Research", description: "Explore cutting-edge models and algorithms.", icon: "🧠", color: "bg-purple-100", link: "/horizontals/ai-research" },
         { title: "Supply Chain", description: "Manage logistics, inventory, and forecasting.", link: "/horizontals/supply-chain", color: "bg-amber-100", icon: "🚢" },
       ],
-      featureCard: { title: "Marketing", description: "Generate content ideas and campaign summaries.", link: "/horizontals/marketing", linear: "bg-linear-to-r from-emerald-200 to-emerald-400", icon: "📢" },
+      featureCard: { title: "Marketing", description: "Generate content ideas and campaign summaries.", link: "/horizontals/marketing", linear: "bg-linear-to-r from-red-200 to-red-400", icon: "📢" },
     },
     {
       name: "Diagonals",
@@ -394,7 +394,7 @@ export default function Navbar() {
         { title: "Operationalization", description: "Deploy and scale AI solutions in production.", icon: "🚀", color: "bg-pink-100", link: "/diagonals/operationalization" },
         { title: "AI & LLM", description: "Build and integrate large language models.", link: "/diagonals/ai-llm", color: "bg-indigo-100", icon: "🤖" },
       ],
-      featureCard: { title: "Consulting", description: "Provide strategic advice and implementation support.", link: "/diagonals/consulting", linear: "bg-linear-to-r from-emerald-200 to-emerald-400", icon: "🤝" },
+      featureCard: { title: "Consulting", description: "Provide strategic advice and implementation support.", link: "/diagonals/consulting", linear: "bg-linear-to-r from-red-200 to-red-400", icon: "🤝" },
     },
     {
       name: "Company",
@@ -404,7 +404,7 @@ export default function Navbar() {
         { title: "Careers", description: "Explore exciting opportunities to grow your career.", icon: "💼", color: "bg-pink-100", link: "/company/careers" },
         { title: "Press", description: "See our latest news and announcements.", link: "/company/press", color: "bg-cyan-100", icon: "📰" },
       ],
-      featureCard: { title: "Culture", description: "Learn about our core values and team spirit.", link: "/company/culture", linear: "bg-linear-to-r from-emerald-200 to-emerald-400", icon: "✨" },
+      featureCard: { title: "Culture", description: "Learn about our core values and team spirit.", link: "/company/culture", linear: "bg-linear-to-r from-red-200 to-red-400", icon: "✨" },
     }
   ], []);
 
