@@ -49,17 +49,17 @@ const DesktopfeatureCard: React.FC<{ card: FeatureCardData }> = ({ card }) => (
     <div className="mb-3">
       <div
         className={`w-full h-32 ${
-          card.linear || "bg-linear-to-r from-red-400 to-red-500"
+          card.linear || "bg-linear-to-r from-teal-400 to-teal-500"
         } rounded-md flex items-center justify-center text-4xl text-white transition-all duration-300`}
       >
         {card.icon || "⭐"}
       </div>
     </div>
     <div className="flex flex-col gap-1">
-      <div className="font-medium text-base group-hover:text-red-800 leading-tight">
+      <div className="font-medium text-base group-hover:text-teal-800 leading-tight">
         {card.title}
       </div>
-      <div className="text-sm text-neutral-600 group-hover:text-red-700 transition">
+      <div className="text-sm text-neutral-600 group-hover:text-teal-700 transition">
         {card.description || "Learn more →"}
       </div>
     </div>
@@ -74,8 +74,8 @@ const DesktopDropdownItem: React.FC<{
   <a
     href={item.link}
     className="flex gap-4 items-center p-4 rounded-lg hover:bg-teal-200 transition-all group"
-    onMouseEnter={() => onMouseEnter(item)} // Fire handler on hover
-    onMouseLeave={onMouseLeave}           // Fire handler on leave
+    onMouseEnter={() => onMouseEnter(item)}
+    onMouseLeave={onMouseLeave}
   >
     <div
       className={`w-11 h-11 ${item.color} group-hover:bg-neutral-100 rounded-lg shrink-0 flex items-center justify-center text-2xl`}
@@ -83,10 +83,10 @@ const DesktopDropdownItem: React.FC<{
       {item.icon}
     </div>
     <div className="flex-1">
-      <p className="text-base font-medium transition-colors group-hover:text-red-800">
+      <p className="text-base font-medium transition-colors group-hover:text-teal-800">
         {item.title}
       </p>
-      <p className="text-sm text-neutral-600 transition-colors group-hover:text-red-700">
+      <p className="text-sm text-neutral-600 transition-colors group-hover:text-teal-700">
         {item.description}
       </p>
     </div>
@@ -124,7 +124,7 @@ const GenericDesktopDropdown: React.FC<{ navItem: NavItem }> = ({ navItem }) => 
         title: hoveredItem.title,
         description: hoveredItem.description,
         link: hoveredItem.link,
-        linear: "bg-linear-to-r from-teal-200 to-red-400",
+        linear: "bg-linear-to-r from-teal-200 to-teal-400",
         icon: hoveredItem.icon,
       };
     }
@@ -204,11 +204,11 @@ const ContactButton: React.FC<{ mobile: boolean; onClick?: () => void; isScrolle
   if (mobile) {
     return (
       <a
-        href="/contact"
-        className="mx-4 mt-4 px-4 py-3 text-center font-mono rounded-full bg-red-600 text-white font-medium hover:bg-red-700 transition-all"
+        href="/login"
+        className="mx-4 mt-4 px-4 py-3 text-center font-mono rounded-full bg-teal-600 text-white font-medium hover:bg-teal-700 transition-all"
         onClick={onClick}
       >
-        Contact
+        Login
       </a>
     );
   }
@@ -216,17 +216,17 @@ const ContactButton: React.FC<{ mobile: boolean; onClick?: () => void; isScrolle
   const desktopClasses = `hidden md:flex items-center px-4 py-1.5 rounded-full transition-all font-medium font-mono ml-2 
         ${
           isScrolled
-            ? "bg-red-500 text-white border-red-400 hover:bg-red-700"
+            ? "bg-teal-500 text-white border-teal-400 hover:bg-teal-700"
             : "border border-black/10 hover:bg-black/5"
         }`;
 
   return (
     <a
-      href="/contact"
+      href="/login"
       className={desktopClasses}
       onClick={onClick}
     >
-      Contact
+      Login
     </a>
   );
 };
@@ -242,7 +242,7 @@ const MobileDropdown: React.FC<{
   const MobileDropdownItem: React.FC<{ item: DropdownContentItem }> = ({ item }) => (
     <a
       href={item.link}
-      className="flex gap-3 items-center p-3 rounded-lg hover:bg-red-200 transition-colors group"
+      className="flex gap-3 items-center p-3 rounded-lg hover:bg-teal-200 transition-colors group"
       onClick={() => setMobileMenuOpen(false)}
     >
       <div
@@ -251,8 +251,8 @@ const MobileDropdown: React.FC<{
         {item.icon}
       </div>
       <div>
-        <p className="font-medium text-sm group-hover:text-red-800">{item.title}</p>
-        <p className="text-sm text-neutral-600 group-hover:text-red-800">
+        <p className="font-medium text-sm group-hover:text-teal-800">{item.title}</p>
+        <p className="text-sm text-neutral-600 group-hover:text-teal-800">
           {item.description}
         </p>
       </div>
@@ -358,55 +358,96 @@ export default function Navbar() {
     };
   }, []);
 
-  // 2. NAVIGATION DATA
   const navItems: NavItem[] = useMemo(() => [
     {
-      name: "Industries",
-      link: "/industries",
+      name: "Book",
+      link: "/turfs",
       dropdownContent: [
-        { title: "Retail", description: "Enhance store operations and predict consumer demand.", icon: "🛒", color: "bg-green-100", link: "/industries/retail" },
-        { title: "CPG", description: "Optimize supply chains and manage fast-moving goods.", icon: "📦", color: "bg-orange-100", link: "/industries/cpg" },
-        { title: "Media", description: "Personalize user feeds and analyze audience engagement.", icon: "🎬", color: "bg-red-100", link: "/industries/media" },
-        { title: "Telecom & Tech", description: "Improve network performance and automate customer support.", icon: "📡", color: "bg-indigo-100", link: "/industries/telecom-tech" },
-        { title: "Manufacturing", description: "Enable predictive maintenance and ensure quality control.", icon: "⚙️", color: "bg-yellow-100", link: "/industries/manufacturing" },
-        { title: "Energy", description: "Optimize consumption and distribution with smart grids.", link: "/industries/energy", color: "bg-pink-100", icon: "💡" }
+        { title: "Football Turf", description: "Find and book 5v5, 7v7, and 11v11 turfs.", icon: "⚽", color: "bg-green-100", link: "/turfs/football" },
+        { title: "Cricket Nets", description: "Book practice nets and match grounds.", icon: "🏏", color: "bg-amber-100", link: "/turfs/cricket" },
+        { title: "Box Cricket", description: "Indoor & outdoor box cricket arenas.", icon: "🥎", color: "bg-orange-100", link: "/turfs/box-cricket" },
+        { title: "Multi-Sport", description: "Badminton, Basketball & more.", icon: "🏀", color: "bg-indigo-100", link: "/turfs/multi-sport" },
       ],
-      featureCard: { title: "Retail", description: "Enhance store operations and predict consumer demand.", link: "/industries/retail", linear: "bg-linear-to-r from-red-200 to-red-400", icon: "🛒" },
+      featureCard: {
+        title: "Instant Booking",
+        description: "Check live availability and book slots instantly.",
+        link: "/turfs",
+        linear: "bg-linear-to-r from-green-200 to-emerald-400",
+        icon: "⚡"
+      }
     },
+  
     {
-      name: "Horizontals",
-      link: "/horizontals",
+      name: "Slots",
+      link: "/pricing",
       dropdownContent: [
-        { title: "Marketing", description: "Generate content ideas and campaign summaries.", icon: "📢", color: "bg-orange-100", link: "/horizontals/marketing" },
-        { title: "Consumer Science", description: "Understand customer behavior and predict trends.", icon: "🧑‍🔬", color: "bg-teal-100", link: "/horizontals/consumer-science" },
-        { title: "AI Research", description: "Explore cutting-edge models and algorithms.", icon: "🧠", color: "bg-purple-100", link: "/horizontals/ai-research" },
-        { title: "Supply Chain", description: "Manage logistics, inventory, and forecasting.", link: "/horizontals/supply-chain", color: "bg-amber-100", icon: "🚢" },
+        { title: "Peak Hours", description: "Evening & weekend pricing details.", icon: "🌇", color: "bg-red-100", link: "/pricing/peak" },
+        { title: "Off-Peak Hours", description: "Morning & weekday discounts.", icon: "🌅", color: "bg-blue-100", link: "/pricing/off-peak" },
+        { title: "Membership Plans", description: "Save more with monthly plans.", icon: "🏷️", color: "bg-purple-100", link: "/pricing/membership" },
+        { title: "Corporate Booking", description: "Bulk bookings for teams & offices.", icon: "🏢", color: "bg-gray-100", link: "/pricing/corporate" },
       ],
-      featureCard: { title: "Marketing", description: "Generate content ideas and campaign summaries.", link: "/horizontals/marketing", linear: "bg-linear-to-r from-red-200 to-red-400", icon: "📢" },
+      featureCard: {
+        title: "Best Price Guarantee",
+        description: "Transparent pricing with no hidden fees.",
+        link: "/pricing",
+        linear: "bg-linear-to-r from-blue-200 to-cyan-400",
+        icon: "💰"
+      }
     },
+  
     {
-      name: "Diagonals",
-      link: "/diagonals",
+      name: "Tournaments",
+      link: "/tournaments",
       dropdownContent: [
-        { title: "Consulting", description: "Provide strategic advice and implementation support.", icon: "🤝", color: "bg-orange-100", link: "/diagonals/consulting" },
-        { title: "Data Engineering", description: "Build and maintain data pipelines and infrastructure.", icon: "🏗️", color: "bg-yellow-100", link: "/diagonals/data-engineering" },
-        { title: "Data Science", description: "Develop predictive models and extract insights.", icon: "📊", color: "bg-purple-100", link: "/diagonals/data-science" },
-        { title: "Operationalization", description: "Deploy and scale AI solutions in production.", icon: "🚀", color: "bg-pink-100", link: "/diagonals/operationalization" },
-        { title: "AI & LLM", description: "Build and integrate large language models.", link: "/diagonals/ai-llm", color: "bg-indigo-100", icon: "🤖" },
+        { title: "Upcoming Events", description: "Register for local competitions.", icon: "🏆", color: "bg-yellow-100", link: "/tournaments/upcoming" },
+        { title: "Host a Tournament", description: "Organize your own league.", icon: "📋", color: "bg-green-100", link: "/tournaments/host" },
+        { title: "Leaderboard", description: "Track team rankings and stats.", icon: "📊", color: "bg-purple-100", link: "/tournaments/leaderboard" },
       ],
-      featureCard: { title: "Consulting", description: "Provide strategic advice and implementation support.", link: "/diagonals/consulting", linear: "bg-linear-to-r from-red-200 to-red-400", icon: "🤝" },
+      featureCard: {
+        title: "Join the League",
+        description: "Compete with the best teams in your city.",
+        link: "/tournaments",
+        linear: "bg-linear-to-r from-yellow-200 to-orange-400",
+        icon: "🔥"
+      }
     },
+  
     {
-      name: "Company",
-      link: "/company",
+      name: "My Account",
+      link: "/dashboard",
       dropdownContent: [
-        { title: "About", description: "Discover who we are and what drives us.", icon: "👤", color: "bg-violet-100", link: "/company/about" },
-        { title: "Careers", description: "Explore exciting opportunities to grow your career.", icon: "💼", color: "bg-pink-100", link: "/company/careers" },
-        { title: "Press", description: "See our latest news and announcements.", link: "/company/press", color: "bg-cyan-100", icon: "📰" },
+        { title: "My Bookings", description: "View and manage your reservations.", icon: "📅", color: "bg-blue-100", link: "/dashboard/bookings" },
+        { title: "Wallet", description: "Manage credits and refunds.", icon: "💳", color: "bg-green-100", link: "/dashboard/wallet" },
+        { title: "Notifications", description: "Booking reminders and updates.", icon: "🔔", color: "bg-pink-100", link: "/dashboard/notifications" },
+        { title: "Profile Settings", description: "Update personal details.", icon: "⚙️", color: "bg-gray-100", link: "/dashboard/profile" },
       ],
-      featureCard: { title: "Culture", description: "Learn about our core values and team spirit.", link: "/company/culture", linear: "bg-linear-to-r from-red-200 to-red-400", icon: "✨" },
+      featureCard: {
+        title: "Quick Rebooking",
+        description: "Rebook your favorite turf in seconds.",
+        link: "/dashboard/bookings",
+        linear: "bg-linear-to-r from-indigo-200 to-purple-400",
+        icon: "⚽"
+      }
+    },
+  
+    {
+      name: "About",
+      link: "/about",
+      dropdownContent: [
+        { title: "Our Facilities", description: "Explore turf features and amenities.", icon: "🏟️", color: "bg-teal-100", link: "/facilities" },
+        { title: "Rules & Policies", description: "Cancellation and refund policy.", icon: "📜", color: "bg-orange-100", link: "/policies" },
+        { title: "Contact Us", description: "Reach our support team.", icon: "📞", color: "bg-cyan-100", link: "/contact" },
+      ],
+      featureCard: {
+        title: "Premium Experience",
+        description: "High-quality turf, lighting, and amenities.",
+        link: "/facilities",
+        linear: "bg-linear-to-r from-teal-200 to-green-400",
+        icon: "✨"
+      }
     }
   ], []);
+  
 
   return (
     <>

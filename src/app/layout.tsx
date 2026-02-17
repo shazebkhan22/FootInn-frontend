@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FootInn | Your Turf Reservation App",
+  title: "FootInn | Turf Reservation App",
   description: "Get your place in turf right now",
   icons: {
     icon: "/logo.svg",

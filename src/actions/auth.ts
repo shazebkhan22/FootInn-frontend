@@ -3,12 +3,15 @@
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
+const BASE_URL = process.env.BACKEND_URL ?? "http://localhost:5001";
+
+
 export async function loginAction(formData: FormData) {
   const email = formData.get('email') as string
   const password = formData.get('password') as string
 
   try {
-    const res = await fetch('http://localhost:5001/auth/login', {
+    const res = await fetch(`${BASE_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -21,7 +24,6 @@ export async function loginAction(formData: FormData) {
       return { error: responseJson.error || 'Login failed' }
     }
 
-    // Extract Token & Role
     const token = responseJson.token
     const userRole = responseJson.data?.user?.role?.toLowerCase()
 
@@ -42,7 +44,7 @@ export async function signupAction(formData: FormData) {
   const password = formData.get('password') as string
 
   try {
-    const res = await fetch('http://localhost:5001/auth/register', {
+    const res = await fetch(`${BASE_URL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password }),
@@ -76,7 +78,7 @@ async function setAuthCookies(token: string, role: string) {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     path: '/',
-    maxAge: 60 * 60 * 24 * 7, // 7 days
+    maxAge: 60 * 60 * 24 * 7,
   })
 
   cookieStore.set('user_role', role, {

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import {
   IconCamera,
   IconChartBar,
@@ -11,12 +12,14 @@ import {
   IconFileWord,
   IconFolder,
   IconHelp,
-  IconInnerShadowTop,
-  IconListDetails,
+  IconBallFootball,
+  IconBuildingStadium,
   IconReport,
   IconSearch,
   IconSettings,
   IconUsers,
+  IconMan,
+  IconPassword,
 } from "@tabler/icons-react"
 
 import { NavDocuments } from "@/components/nav-documents"
@@ -35,7 +38,7 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
+    name: "Shazeb",
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
@@ -46,14 +49,24 @@ const data = {
       icon: IconDashboard,
     },
     {
-      title: "Lifecycle",
+      title: "Update Profile",
       url: "#",
-      icon: IconListDetails,
+      icon: IconMan,
+    },
+    {
+      title: "Change Password",
+      url: "#",
+      icon: IconPassword,
     },
     {
       title: "Analytics",
       url: "#",
       icon: IconChartBar,
+    },
+    {
+      title: "View Turfs",
+      url: "#",
+      icon: IconBuildingStadium,
     },
     {
       title: "Projects",
@@ -160,10 +173,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="#">
-                <IconInnerShadowTop className="!size-5" />
+              <Link href="/">
+                <IconBallFootball className="!size-5" />
                 <span className="text-base font-semibold">FootInn</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
