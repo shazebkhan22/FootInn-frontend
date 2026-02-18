@@ -69,5 +69,6 @@ export const config = {
     "/super-admin/:path*",
     "/login",
     "/register",
+    "/dashboard/:path*",
   ],
 };
