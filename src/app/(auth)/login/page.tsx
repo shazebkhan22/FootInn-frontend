@@ -1,9 +1,10 @@
-import { LoginForm } from "@/components/auth/login-form"
+import { LoginForm } from "@/components/auth/login-form";
 
 export const metadata = {
-    title: "Login | FootInn",
-    description: "Login to your account to access your dashboard and manage your settings.",
-}
+  title: "Login | FootInn",
+  description:
+    "Login to your account to access your dashboard and manage your settings.",
+};
 
 export default function LoginPage() {
   return (
@@ -12,5 +13,5 @@ export default function LoginPage() {
         <LoginForm />
       </div>
     </div>
-  )
+  );
 }

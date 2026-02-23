@@ -1,9 +1,10 @@
-import { SignupForm } from "@/components/auth/sign-up-form"
+import { SignupForm } from "@/components/auth/sign-up-form";
 
 export const metadata = {
   title: "Sign Up | FootInn",
-  description: "Sign up to your account to access your dashboard and manage your settings.",
-}
+  description:
+    "Sign up to your account to access your dashboard and manage your settings.",
+};
 
 export default function SignupPage() {
   return (
@@ -12,5 +13,5 @@ export default function SignupPage() {
         <SignupForm />
       </div>
     </div>
-  )
+  );
 }
