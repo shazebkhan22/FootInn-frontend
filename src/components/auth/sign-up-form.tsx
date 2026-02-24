@@ -52,7 +52,7 @@ export function SignupForm({
         <CardContent className="grid p-0 md:grid-cols-2">
           <form className="p-6 md:p-8" onSubmit={handleSubmit}>
             <FieldGroup>
-              <div className="flex flex-col items-center gap-2 text-center">
+              <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold">Create your account</h1>
                 <p className="text-muted-foreground text-sm text-balance">
                   Enter your email below to create your account
@@ -138,7 +138,7 @@ export function SignupForm({
           </form>
           <div className="bg-muted relative hidden md:block">
             <Image
-              src="/Lodha.jpg"
+              src="/foot2.png"
               alt="Image"
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
               fill

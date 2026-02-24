@@ -1,13 +1,9 @@
 import Image from "next/image";
 import Container from "@/components/shared/Container";
 import { Button } from "@/components/ui/button";
-import Navbar1 from "@/components/navbar1";
-
 export default function Home() {
   return (
-    <section className="bg-neutral-50 min-h-screen p-3 sm:p-5">
-      <Navbar1 />
-
+    <section className="bg-neutral-50 min-h-screen px-3 sm:px-5">
       <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-[radial-gradient(ellipse_at_top,_#ccfbf1,_#14b8a6,_#0f766e)] py-20 sm:py-24 md:py-28 min-h-[calc(100vh_-_1.5rem)] flex items-center">
         <Container>
           <div className="relative text-center space-y-8">

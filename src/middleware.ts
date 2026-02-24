@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
+  
   const token = request.cookies.get("session_token")?.value;
   const role = request.cookies.get("user_role")?.value;
   const { pathname } = request.nextUrl;
@@ -11,7 +12,6 @@ export function middleware(request: NextRequest) {
   const isTurfRoute = pathname.startsWith("/turf-admin");
   const isSuperRoute = pathname.startsWith("/super-admin");
 
-  // 1️⃣ Not logged in
   if (!token) {
     if (isAuthPage || pathname === "/") {
       return NextResponse.next();
@@ -19,12 +19,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  // 2️⃣ Logged in but accessing login/register
   if (isAuthPage) {
     return redirectByRole(role, request);
   }
 
-  // 3️⃣ Role protection
   if (isUserRoute && role !== "user") {
     return redirectByRole(role, request);
   }

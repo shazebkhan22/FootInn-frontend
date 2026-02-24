@@ -5,7 +5,6 @@ import { redirect } from 'next/navigation'
 
 const BASE_URL = process.env.BACKEND_URL ?? "http://localhost:5001";
 
-
 export async function loginAction(formData: FormData) {
   const email = formData.get('email') as string
   const password = formData.get('password') as string

@@ -20,8 +20,8 @@ type PricingPlan = {
 
 const PricingCards = ({ pricingData }: { pricingData: PricingPlan[] }) => {
   return (
-    <section className="py-24 bg-neutral-50">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="py-32 bg-neutral-50">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16 space-y-2">
           <h2 className="text-2xl font-semibold sm:text-3xl lg:text-4xl">
             Select the Best Plan for You!
@@ -32,14 +32,14 @@ const PricingCards = ({ pricingData }: { pricingData: PricingPlan[] }) => {
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-4">
+        <div className="grid gap-6 lg:grid-cols-3">
           {pricingData.map((plan) => (
             <Card
               key={plan.id}
               className={`relative transition-all
                 ${
                   plan.highlighted
-                    ? "bg-primary text-primary-foreground border-primary shadow-2xl scale-105"
+                    ? "bg-primary text-primary-foreground border-primary shadow-2xl"
                     : "bg-card text-card-foreground"
                 }`}
             >

@@ -39,7 +39,7 @@ interface Navbar1Props {
 
 const Navbar1 = ({
   logo = {
-    url: "",
+    url: "/",
     src: "/logo.svg",
     alt: "logo",
     title: "FootInn",
@@ -53,7 +53,7 @@ const Navbar1 = ({
           title: "Blog",
           description: "The latest industry news, updates, and info",
           icon: <Book className="size-5 shrink-0" />,
-          url: "#",
+          url: "/blog",
         },
         {
           title: "Company",
@@ -90,7 +90,7 @@ const Navbar1 = ({
           title: "Contact Us",
           description: "We are here to help you with any questions you have",
           icon: <Sunset className="size-5 shrink-0" />,
-          url: "#",
+          url: "/contact",
         },
         {
           title: "Status",
@@ -113,7 +113,7 @@ const Navbar1 = ({
     {
       title: "Blog",
       url: "/blog",
-    },
+    }
   ],
   auth = {
     login: { title: "Login", url: "/login" },
@@ -122,7 +122,7 @@ const Navbar1 = ({
   className,
 }: Navbar1Props) => {
   return (
-    <section className={cn("py-4", className)}>
+    <section className={cn("py-4 bg-neutral-50", className)}>
       <div className="max-w-7xl mx-auto">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">

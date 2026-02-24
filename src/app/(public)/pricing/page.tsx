@@ -2,74 +2,78 @@ import PricingCards from '@/components/shadcn-studio/blocks/pricing-component-01
 
 const pricingData = [
   {
-    id: 'free',
-    title: 'Free',
-    subtitle: 'Access to all free components',
-    price: 0,
-    buttonText: 'Browse free components',
+    id: 'starter',
+    title: 'Starter',
+    subtitle: 'Perfect for single turf owners',
+    price: 1999,
+    priceNote: 'per month',
+    buttonText: 'Start Free Trial',
     features: [
-      'Access to all free components',
-      'Copy and paste, no complexity',
-      'Built with Next.js, React, Tailwind CSS & Framer Motion',
-      'Fully responsive and customizable',
-      'Documentation and examples included'
+      'Manage 1 Turf',
+      'Online slot booking system',
+      'Basic customer management',
+      'Manual payment tracking',
+      'Daily booking reports',
+      'Email support'
     ]
   },
   {
-    id: 'annual',
-    title: 'Annual Access',
-    subtitle: 'Paid yearly',
-    price: 169,
-    originalPrice: 249,
-    priceNote: 'per year',
-    buttonText: 'Get Annual Access',
+    id: 'growth',
+    title: 'Growth',
+    subtitle: 'For growing turf businesses',
+    price: 4999,
+    originalPrice: 6999,
+    priceNote: 'per month',
+    buttonText: 'Upgrade to Growth',
     features: [
-      'Access to 60+ premium Component Blocks',
-      'Access to 12+ ready-to-use Templates',
-      '1 year of updates and new features',
-      'AI-ready prompts for Lovable, V0 and more',
-      'Private Discord community access',
-      '48-hour dedicated support turnaround'
+      'Manage up to 3 Turfs',
+      'Online payments (Razorpay / Stripe)',
+      'Automated slot availability control',
+      'Customer booking history',
+      'Revenue & analytics dashboard',
+      'Discount coupons & offers',
+      'Priority support'
     ]
   },
   {
-    id: 'lifetime',
-    title: 'Lifetime Access',
-    subtitle: 'One-time Purchase',
-    price: 199,
-    originalPrice: 299,
-    priceNote: 'One-time payment',
-    buttonText: 'Get Lifetime Access',
+    id: 'pro',
+    title: 'Pro',
+    subtitle: 'For multi-location turf chains',
+    price: 9999,
+    originalPrice: 12999,
+    priceNote: 'per month',
+    buttonText: 'Get Pro Access',
     highlighted: true,
-    badge: 'Most popular',
+    badge: 'Most Popular',
     features: [
-      'Access to 60+ premium Component Blocks',
-      'Access to 12+ ready-to-use Templates',
-      'Lifetime updates for all content',
-      'Access to all future releases',
-      'Private Discord community access',
-      '48-hour dedicated support turnaround',
-      'AI-ready prompts for Lovable, V0 and more'
+      'Unlimited Turfs',
+      'Multi-admin & staff roles',
+      'Advanced analytics & revenue insights',
+      'Automated WhatsApp booking confirmations',
+      'Dynamic pricing (peak / off-peak)',
+      'GST invoicing & tax reports',
+      'Custom branding (your logo & domain)',
+      'Priority 24/7 support'
     ]
   },
-  {
-    id: 'team',
-    title: 'Team',
-    subtitle: 'One-time Purchase',
-    price: 1590,
-    originalPrice: 1990,
-    priceNote: '10 team members included',
-    buttonText: 'Get Teams Access',
-    features: [
-      '10 team members included',
-      'Access to 60+ premium Component Blocks',
-      'Access to 12+ ready-to-use Templates',
-      'Lifetime updates for all content',
-      'Access to all future releases',
-      'Private Discord community access',
-      '48-hour dedicated support turnaround'
-    ]
-  }
+  // {
+  //   id: 'enterprise',
+  //   title: 'Enterprise',
+  //   subtitle: 'Custom solution for large stadiums & franchises',
+  //   price: 24999,
+  //   priceNote: 'custom billing',
+  //   buttonText: 'Contact Sales',
+  //   features: [
+  //     'Unlimited locations & staff',
+  //     'API integrations',
+  //     'Dedicated account manager',
+  //     'Custom feature development',
+  //     'On-site setup assistance',
+  //     'Advanced financial reporting',
+  //     'White-label mobile app',
+  //     '24/7 premium support'
+  //   ]
+  // }
 ]
 
 export default function PricingPage() {
