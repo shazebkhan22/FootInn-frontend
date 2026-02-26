@@ -20,7 +20,7 @@ type PricingPlan = {
 
 const PricingCards = ({ pricingData }: { pricingData: PricingPlan[] }) => {
   return (
-    <section className="py-32 bg-neutral-50">
+    <section className="py-32">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16 space-y-2">
           <h2 className="text-2xl font-semibold sm:text-3xl lg:text-4xl">

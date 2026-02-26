@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
-import { logoutAction } from "@/actions/auth"
+import { DropdownMenuAvatar } from "./ui/dropdown-menu-avatar"
 
 export function SiteHeader() {
   return (
@@ -14,9 +14,7 @@ export function SiteHeader() {
         />
         <h1 className="text-base font-medium">Dashboard Overview</h1>
         <div className="ml-auto flex items-center gap-2">
-          <Button variant="default" size="sm" className="hidden sm:flex" onClick={logoutAction}>
-            Logout
-          </Button>
+          <DropdownMenuAvatar/>
         </div>
       </div>
     </header>

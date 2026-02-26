@@ -5,7 +5,7 @@ import { FC } from "react";
 
 const Footer: FC = () => {
   return (
-    <div className="bg-neutral-50 pt-20 px-5">
+    <div className=" pt-20 px-5">
       <footer className="bg-card w-full max-w-full mx-auto text-card-foreground pt-8 lg:pt-12 px-4 sm:px-8 md:px-16 lg:px-28 rounded-t-3xl overflow-hidden border border-border">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-6 gap-8 md:gap-12">
           {/* Left Section */}

@@ -2,10 +2,29 @@
 import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { DropdownMenuAvatar } from "./ui/dropdown-menu-avatar";
 
 interface MenuItem {
   title: string;
@@ -17,6 +36,7 @@ interface MenuItem {
 
 interface Navbar1Props {
   className?: string;
+  isAuthenticated?: boolean;
   logo?: {
     url: string;
     src: string;
@@ -30,14 +50,11 @@ interface Navbar1Props {
       title: string;
       url: string;
     };
-    signup: {
-      title: string;
-      url: string;
-    };
   };
 }
 
 const Navbar1 = ({
+  isAuthenticated = false,
   logo = {
     url: "/",
     src: "/logo.svg",
@@ -113,20 +130,19 @@ const Navbar1 = ({
     {
       title: "Blog",
       url: "/blog",
-    }
+    },
   ],
   auth = {
     login: { title: "Login", url: "/login" },
-    signup: { title: "Sign up", url: "/register" },
   },
   className,
 }: Navbar1Props) => {
   return (
-    <section className={cn("py-4 bg-neutral-50", className)}>
+    <section className={cn("py-5", className)}>
       <div className="max-w-7xl mx-auto">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">
-          <div className="flex items-center gap-6">
+          <div className="flex gap-6">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
               <Image
@@ -149,12 +165,13 @@ const Navbar1 = ({
             </div>
           </div>
           <div className="flex gap-2">
-            <Button asChild variant="outline" size="sm">
-              <a href={auth.login.url}>{auth.login.title}</a>
-            </Button>
-            <Button asChild size="sm">
-              <a href={auth.signup.url}>{auth.signup.title}</a>
-            </Button>
+            {isAuthenticated ? (
+              <DropdownMenuAvatar />
+            ) : (
+              <Button asChild size="default">
+                <a href={auth.login.url}>{auth.login.title}</a>
+              </Button>
+            )}
           </div>
         </nav>
 
@@ -201,12 +218,13 @@ const Navbar1 = ({
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
-                    <Button asChild variant="outline">
-                      <a href={auth.login.url}>{auth.login.title}</a>
-                    </Button>
-                    <Button asChild>
-                      <a href={auth.signup.url}>{auth.signup.title}</a>
-                    </Button>
+                    {isAuthenticated ? (
+                      <DropdownMenuAvatar />
+                    ) : (
+                      <Button asChild size="default">
+                        <a href={auth.login.url}>{auth.login.title}</a>
+                      </Button>
+                    )}
                   </div>
                 </div>
               </SheetContent>

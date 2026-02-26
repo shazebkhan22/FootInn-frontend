@@ -93,5 +93,5 @@ export async function logoutAction() {
   cookieStore.delete('session_token')
   cookieStore.delete('user_role')
   
-  redirect('/login')
+  redirect('/')
 }

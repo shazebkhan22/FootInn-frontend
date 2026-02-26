@@ -34,7 +34,7 @@ const blogPosts = [
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen">
       <Container>
         {/* Hero */}
         <section className="pb-16 text-center">
