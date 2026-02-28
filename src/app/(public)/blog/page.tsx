@@ -1,6 +1,7 @@
 import Container from "@/components/shared/Container";
 import Link from "next/link";
 import Image from "next/image";
+import CTASection from "@/components/ui/cta-section";
 
 const blogPosts = [
   {
@@ -10,7 +11,7 @@ const blogPosts = [
       "Avoid last-minute surprises. Learn what to verify before confirming your turf booking.",
     category: "Booking Tips",
     date: "Feb 20, 2026",
-    image: "/images/blog-1.jpg",
+    image: "/blogs/3.png",
   },
   {
     id: 2,
@@ -19,7 +20,7 @@ const blogPosts = [
       "Peak hours, demand patterns, and how you can grab your preferred time slot early.",
     category: "Insights",
     date: "Feb 18, 2026",
-    image: "/images/blog-2.jpg",
+    image: "/blogs/1.png",
   },
   {
     id: 3,
@@ -28,7 +29,7 @@ const blogPosts = [
       "Understand pricing benefits and cost-splitting strategies for group games.",
     category: "Group Booking",
     date: "Feb 15, 2026",
-    image: "/images/blog-3.jpg",
+    image: "/blogs/2.png",
   },
 ];
 
@@ -37,22 +38,22 @@ export default function BlogPage() {
     <div className="min-h-screen">
       <Container>
         {/* Hero */}
-        <section className="pb-16 text-center">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
+        <div className="pb-12 text-start">
+          <h1 className="text-4xl font-semibold text-foreground mb-2">
             Turf Booking Insights & Guides
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Stay updated with booking tips, turf management insights,
-            and strategies to maximize your game experience.
+          <p className="text-muted-foreground text-xl max-w-xl">
+            Stay updated with booking tips, turf management insights, and
+            strategies to maximize your game experience.
           </p>
-        </section>
+        </div>
 
         {/* Featured */}
-        <section className="mb-16 bg-card border border-border rounded-2xl shadow-sm overflow-hidden">
+        <div className="mb-10 bg-card border border-border rounded-2xl shadow-sm overflow-hidden">
           <div className="grid md:grid-cols-2">
-            <div className="relative h-64 md:h-full">
+            <div className="relative h-64 md:h-88">
               <Image
-                src="/images/featured-blog.jpg"
+                src="/blogs/1.png"
                 alt="Featured Blog"
                 fill
                 className="object-cover"
@@ -81,11 +82,11 @@ export default function BlogPage() {
               </Link>
             </div>
           </div>
-        </section>
+        </div>
 
         {/* Blog Grid */}
-        <section className="pb-20">
-          <h3 className="text-2xl font-semibold text-foreground mb-8">
+        <div className="pb-12">
+          <h3 className="text-2xl font-semibold text-foreground mb-4">
             Latest Articles
           </h3>
 
@@ -95,7 +96,7 @@ export default function BlogPage() {
                 key={post.id}
                 className="bg-card border border-border rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden"
               >
-                <div className="relative h-48">
+                <div className="relative h-66">
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -105,7 +106,7 @@ export default function BlogPage() {
                 </div>
 
                 <div className="p-6">
-                  <span className="text-xs font-medium text-primary">
+                  <span className="text-md font-medium text-primary">
                     {post.category}
                   </span>
 
@@ -131,25 +132,14 @@ export default function BlogPage() {
               </div>
             ))}
           </div>
-        </section>
-
-        {/* CTA */}
-        <section className="bg-primary text-primary-foreground rounded-2xl py-12 text-center mb-20">
-          <h3 className="text-2xl font-bold mb-4">
-            Ready to Book Your Next Game?
-          </h3>
-
-          <p className="mb-6 opacity-90">
-            Discover top-rated turfs in your area and lock your slot in seconds.
-          </p>
-
-          <Link
-            href="/turfs"
-            className="bg-background text-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition"
-          >
-            Explore Turfs
-          </Link>
-        </section>
+        </div>
+        <CTASection
+          title="Ready to Book Your Next Game?"
+          description="Discover top-rated turfs in your area and lock your slot in seconds."
+          buttonText="Explore Turfs"
+          buttonHref="/turfs"
+          backgroundImage="/background/bg1.svg"
+        />
       </Container>
     </div>
   );

@@ -7,7 +7,7 @@ const Contact = () => {
     <div className="w-full">
       <Map />
       <div className="flex flex-col lg:flex-row items-stretch py-10">
-        <div className="w-full lg:w-1/2 p-8 bg-gradient-to-b from-primary to-primary/30 m-4 rounded-3xl flex flex-col">
+        <div className="w-full lg:w-1/2 p-8 bg-gradient-to-b from-primary/80 to-primary/30 m-4 rounded-3xl flex flex-col">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground tracking-tight mb-6 font-sans">
             Get In Touch
           </h2>

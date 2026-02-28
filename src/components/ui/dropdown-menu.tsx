@@ -3,6 +3,7 @@
 import * as React from "react"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui"
+import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 
@@ -63,10 +64,13 @@ function DropdownMenuItem({
   className,
   inset,
   variant = "default",
+  link,
+  children,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
   inset?: boolean
   variant?: "default" | "destructive"
+  link?: string
 }) {
   return (
     <DropdownMenuPrimitive.Item
@@ -78,7 +82,16 @@ function DropdownMenuItem({
         className
       )}
       {...props}
-    />
+      asChild={!!link}
+    >
+      {link ? (
+        <Link href={link} className="flex w-full items-center gap-2">
+          {children}
+        </Link>
+      ) : (
+        children
+      )}
+    </DropdownMenuPrimitive.Item>
   )
 }
 

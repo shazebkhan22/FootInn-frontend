@@ -74,7 +74,7 @@ export const InfiniteMovingCards = ({
         {items.map((item, idx) => (
           <li
             key={`${item.title}-${idx}`}
-            className="relative w-[320px] md:w-[380px] shrink-0 rounded-2xl border border-border bg-card px-8 py-8 shadow-sm transition-all hover:shadow-lg"
+            className="relative w-[320px] md:w-[350px] shrink-0 rounded-2xl border border-border bg-card px-8 py-8 shadow-sm transition-all hover:shadow-lg"
           >
             <div className="flex flex-col justify-between h-full">
               <div>

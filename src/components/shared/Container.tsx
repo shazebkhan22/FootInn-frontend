@@ -13,11 +13,11 @@ export default function Container({
   className,
 }: ContainerProps) {
   if (fullWidth) {
-    return <div className={clsx("w-full py-32", className)}>{children}</div>;
+    return <div className={clsx("w-full py-20", className)}>{children}</div>;
   }
 
   return (
-    <div className={clsx("max-w-6xl mx-auto px-6 py-32", className)}>
+    <div className={clsx("max-w-6xl mx-auto px-6 py-20", className)}>
       {children}
     </div>
   );

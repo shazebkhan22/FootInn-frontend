@@ -20,12 +20,12 @@ type PricingPlan = {
 
 const PricingCards = ({ pricingData }: { pricingData: PricingPlan[] }) => {
   return (
-    <section className="py-32">
+    <section className="py-20">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16 space-y-2">
-          <h2 className="text-2xl font-semibold sm:text-3xl lg:text-4xl">
+          <h1 className="text-2xl font-semibold sm:text-3xl lg:text-4xl">
             Select the Best Plan for You!
-          </h2>
+          </h1>
           <p className="text-muted-foreground text-xl">
             Discover Our Flexible Plans, Compare Features, and Choose <br />
             the Ideal Option for Your Needs.
@@ -39,8 +39,8 @@ const PricingCards = ({ pricingData }: { pricingData: PricingPlan[] }) => {
               className={`relative transition-all
                 ${
                   plan.highlighted
-                    ? "bg-primary text-primary-foreground border-primary shadow-2xl"
-                    : "bg-card text-card-foreground"
+                    ? "bg-primary text-primary-foreground border-primary shadow-2xl hover:scale-110 duration-500"
+                    : "bg-card text-card-foreground hover:scale-105 duration-500"
                 }`}
             >
               {plan.badge && (

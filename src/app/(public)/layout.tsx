@@ -1,6 +1,5 @@
-
 import Footer from "@/components/footer";
-import Navbar1 from "@/components/navbar1";
+import Navbar from "@/components/navbar";
 import { cookies } from "next/headers";
 
 export async function getAuthUser() {
@@ -12,8 +11,7 @@ export async function getAuthUser() {
   return { isAuthenticated: true };
 }
 
-
-export default async function RootLayout({
+export default async function PublicLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -21,12 +19,10 @@ export default async function RootLayout({
   const user = await getAuthUser();
 
   return (
-    <html lang="en">
-      <body>
-        <Navbar1 isAuthenticated={!!user} />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <>
+      <Navbar isAuthenticated={!!user} />
+      <main>{children}</main>
+      <Footer />
+    </>
   );
 }
