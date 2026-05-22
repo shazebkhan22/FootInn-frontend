@@ -19,11 +19,13 @@ export async function loginAction(formData: FormData) {
 
     const responseJson = await res.json()
 
-    if (!res.ok || responseJson.status !== 'success') {
+    if (!res.ok || !responseJson.success) {
       return { error: responseJson.error || 'Login failed' }
     }
 
-    const token = responseJson.token
+    const setCookies: string[] = res.headers.getSetCookie?.() ?? []
+    const jwtCookie = setCookies.find((c) => c.startsWith('jwt='))
+    const token = jwtCookie?.split(';')[0].slice('jwt='.length)
     const userRole = responseJson.data?.user?.role?.toLowerCase()
 
     if (!token) return { error: "No token received from server." }
@@ -36,7 +38,6 @@ export async function loginAction(formData: FormData) {
   }
 }
 
-// --- SIGNUP ACTION ---
 export async function signupAction(formData: FormData) {
   const name = formData.get('name') as string
   const email = formData.get('email') as string
@@ -52,11 +53,13 @@ export async function signupAction(formData: FormData) {
 
     const responseJson = await res.json()
 
-    if (!res.ok || responseJson.status !== 'success') {
+    if (!res.ok || !responseJson.success) {
       return { error: responseJson.error || 'Registration failed' }
     }
 
-    const token = responseJson.token
+    const setCookies: string[] = res.headers.getSetCookie?.() ?? []
+    const jwtCookie = setCookies.find((c) => c.startsWith('jwt='))
+    const token = jwtCookie?.split(';')[0].slice('jwt='.length)
     const userRole = responseJson.data?.user?.role?.toLowerCase() || 'user'
 
     if (!token) return { error: "No token received from server." }
@@ -69,7 +72,6 @@ export async function signupAction(formData: FormData) {
   }
 }
 
-// --- HELPER: Set Cookies ---
 async function setAuthCookies(token: string, role: string) {
   const cookieStore = await cookies()
   
@@ -85,6 +87,15 @@ async function setAuthCookies(token: string, role: string) {
     path: '/',
     maxAge: 60 * 60 * 24 * 7,
   })
+}
+
+export async function getAuthUser() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("session_token")?.value;
+
+  if (!token) return null;
+
+  return { isAuthenticated: true };
 }
 
 export async function logoutAction() {

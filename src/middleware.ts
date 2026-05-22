@@ -8,6 +8,8 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const isAuthPage = pathname === "/login" || pathname === "/register";
+
+  if (pathname === "/auth/callback") return NextResponse.next();
   const isUserRoute = pathname.startsWith("/user");
   const isTurfRoute = pathname.startsWith("/turf-admin");
   const isSuperRoute = pathname.startsWith("/super-admin");
@@ -68,5 +70,6 @@ export const config = {
     "/login",
     "/register",
     "/dashboard/:path*",
+    "/auth/callback",
   ],
 };
