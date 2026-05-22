@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Container from "@/components/shared/Container";
 import { Button } from "@/components/ui/button";
-import InfiniteMovingCardsDemo from "@/components/infinite-moving-cards-demo";
+import InfiniteMovingCardsDemo from "@/components/sections/infinite-moving-cards-demo";
 import { AppleCardsCarouselDemo } from "@/components/ui/apple-cards-demo";
 export default function Home() {
   return (

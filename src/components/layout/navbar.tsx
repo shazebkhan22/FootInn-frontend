@@ -24,7 +24,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { DropdownMenuAvatar } from "./ui/dropdown-menu-avatar";
+import { DropdownMenuAvatar } from "@/components/ui/dropdown-menu-avatar";
 
 interface MenuItem {
   title: string;

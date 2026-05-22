@@ -1,5 +1,5 @@
 import React from 'react'
-import { LogoutButton } from '@/components/ui/logoutButton'
+import { LogoutButton } from '@/components/layout/logoutButton'
 
 const layout = () => {
   return (

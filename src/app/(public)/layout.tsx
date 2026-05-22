@@ -1,5 +1,5 @@
-import Footer from "@/components/footer";
-import Navbar from "@/components/navbar";
+import Footer from "@/components/layout/footer";
+import Navbar from "@/components/layout/navbar";
 import { getAuthUser } from "@/actions/auth";
 
 export default async function PublicLayout({

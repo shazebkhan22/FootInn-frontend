@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
-import { DropdownMenuAvatar } from "./ui/dropdown-menu-avatar"
+import { DropdownMenuAvatar } from "@/components/ui/dropdown-menu-avatar"
 
 export function SiteHeader() {
   return (
