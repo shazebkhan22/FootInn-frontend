@@ -4,6 +4,41 @@ import { cookies } from 'next/headers'
 
 const BASE_URL = process.env.BACKEND_URL ?? "http://localhost:5001"
 
+/* -------------------------------------------------------
+   BULK CREATE TIME SLOTS
+   POST /time-slots/bulk
+------------------------------------------------------- */
+export async function bulkCreateTimeSlotsAction(
+  turfId: number,
+  slots: { startTime: string; endTime: string; priceOverride?: number }[]
+): Promise<{ success: true; data: unknown } | { error: string }> {
+  try {
+    const token = (await cookies()).get("session_token")?.value
+    if (!token) return { error: "Unauthorized" }
+
+    const res = await fetch(`${BASE_URL}/time-slots/bulk`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ turfId, slots }),
+      cache: "no-store",
+    })
+
+    const json = await res.json()
+    if (!res.ok) return { error: json.message || "Failed to bulk create time slots" }
+
+    return { success: true, data: json.data }
+  } catch {
+    return { error: "Server error while bulk creating time slots" }
+  }
+}
+
+/* -------------------------------------------------------
+   CREATE TIME SLOT
+   POST /time-slots
+------------------------------------------------------- */
 export async function createTimeSlotAction(
   turfId: number,
   startTime: string,
@@ -13,9 +48,7 @@ export async function createTimeSlotAction(
   | { error: string }
 > {
   try {
-    const cookieStore = await cookies()
-    const token = cookieStore.get("session_token")?.value
-
+    const token = (await cookies()).get("session_token")?.value
     if (!token) return { error: "Unauthorized" }
 
     const res = await fetch(`${BASE_URL}/time-slots`, {
@@ -41,6 +74,10 @@ export async function createTimeSlotAction(
   }
 }
 
+/* -------------------------------------------------------
+   UPDATE TIME SLOT
+   PUT /time-slots/:id
+------------------------------------------------------- */
 export async function updateTimeSlotAction(
   slotId: number,
   startTime: string,
@@ -50,13 +87,11 @@ export async function updateTimeSlotAction(
   | { error: string }
 > {
   try {
-    const cookieStore = await cookies()
-    const token = cookieStore.get("session_token")?.value
-
+    const token = (await cookies()).get("session_token")?.value
     if (!token) return { error: "Unauthorized" }
 
     const res = await fetch(`${BASE_URL}/time-slots/${slotId}`, {
-      method: "PUT", // change to PATCH if your backend uses PATCH
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -78,20 +113,20 @@ export async function updateTimeSlotAction(
   }
 }
 
+/* -------------------------------------------------------
+   DELETE TIME SLOT
+   DELETE /time-slots/:id
+------------------------------------------------------- */
 export async function deleteTimeSlotAction(
   slotId: number
 ): Promise<{ success: true } | { error: string }> {
   try {
-    const cookieStore = await cookies()
-    const token = cookieStore.get("session_token")?.value
-
+    const token = (await cookies()).get("session_token")?.value
     if (!token) return { error: "Unauthorized" }
 
     const res = await fetch(`${BASE_URL}/time-slots/${slotId}`, {
       method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: `Bearer ${token}` },
       cache: "no-store",
     })
 

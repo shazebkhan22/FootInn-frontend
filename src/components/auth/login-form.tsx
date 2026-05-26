@@ -119,7 +119,7 @@ export function LoginForm({
                   variant="outline"
                   type="button"
                   onClick={() => {
-                    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:5001"}/auth/google`;
+                    window.location.href = `${process.env.BACKEND_URL ?? "http://localhost:5001"}/auth/google`;
                   }}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

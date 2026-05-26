@@ -5,14 +5,13 @@ import { redirect } from "next/navigation";
 
 const BASE_URL = process.env.BACKEND_URL ?? "http://localhost:5001";
 
-type UpdateProfileResult = {
-  success?: boolean;
-  error?: string;
-};
-
+/* -------------------------------------------------------
+   UPDATE PROFILE
+   PUT /user/me
+------------------------------------------------------- */
 export async function updateProfileAction(
   formData: FormData
-): Promise<UpdateProfileResult> {
+): Promise<{ success?: boolean; error?: string }> {
   const name = formData.get("name") as string | null;
   const email = formData.get("email") as string | null;
 
@@ -28,7 +27,7 @@ export async function updateProfileAction(
   }
 
   try {
-    const res = await fetch(`${BASE_URL}/users/me`, {
+    const res = await fetch(`${BASE_URL}/user/me`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -53,14 +52,13 @@ export async function updateProfileAction(
   }
 }
 
-type ChangePasswordResult = {
-  success?: boolean;
-  error?: string;
-};
-
+/* -------------------------------------------------------
+   CHANGE PASSWORD
+   PATCH /user/me/change-password
+------------------------------------------------------- */
 export async function changePasswordAction(
   formData: FormData
-): Promise<ChangePasswordResult> {
+): Promise<{ success?: boolean; error?: string }> {
   const oldPassword = formData.get("oldPassword") as string;
   const newPassword = formData.get("newPassword") as string;
   const confirmNewPassword = formData.get("confirmNewPassword") as string;
@@ -81,17 +79,13 @@ export async function changePasswordAction(
   }
 
   try {
-    const res = await fetch(`${BASE_URL}/users/me/change-password`, {
-      method: "PUT",
+    const res = await fetch(`${BASE_URL}/user/me/change-password`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        oldPassword,
-        newPassword,
-        confirmNewPassword,
-      }),
+      body: JSON.stringify({ oldPassword, newPassword, confirmNewPassword }),
       cache: "no-store",
     });
 

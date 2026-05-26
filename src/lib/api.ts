@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-const BASE_URL: string = process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://localhost:5001";
+const BASE_URL: string = process.env.BACKEND_URL ?? "http://localhost:5001";
 
 export async function getDataHelper<T>(endpoint: string): Promise<T> {
   const cookieStore = await cookies();

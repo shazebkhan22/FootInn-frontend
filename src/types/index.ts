@@ -2,6 +2,15 @@
 
 export type Role = "USER" | "TURF_ADMIN" | "SUPER_ADMIN"
 
+export type SportType =
+  | "FOOTBALL"
+  | "CRICKET"
+  | "BASKETBALL"
+  | "BADMINTON"
+  | "TENNIS"
+  | "VOLLEYBALL"
+  | "OTHER"
+
 export type BookingStatus = "PENDING_PAYMENT" | "CONFIRMED" | "CANCELLED" | "REFUNDED"
 
 export type BookingType = "SELF" | "GROUP" | "FULL"
@@ -32,6 +41,7 @@ export interface Turf {
   pricePerHr: number
   capacity: number
   isActive: boolean
+  sports: SportType[]
   adminId: number
   createdAt: string
   updatedAt: string

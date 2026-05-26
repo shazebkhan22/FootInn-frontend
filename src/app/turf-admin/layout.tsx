@@ -1,12 +1,11 @@
 import React from 'react'
 import { LogoutButton } from '@/components/layout/logoutButton'
 
-const layout = () => {
+export default function TurfAdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-        <LogoutButton />
+      <LogoutButton />
+      {children}
     </div>
   )
 }
-
-export default layout

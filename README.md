@@ -338,7 +338,7 @@ getDataHelper<T>(endpoint: string, options?: RequestInit): Promise<T>
 Resolves the backend base URL:
 
 ```
-process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:5001"
+process.env.BACKEND_URL || "http://localhost:5001"
 ```
 
 > The variable is named `STRAPI_URL` for historical reasons but targets the Express/Node.js backend, not Strapi CMS.
@@ -461,7 +461,7 @@ Create `.env.local` in the `frontend/` directory:
 
 ```bash
 # Backend API base URL (Express/Node.js server)
-NEXT_PUBLIC_STRAPI_URL=http://localhost:5001
+BACKEND_URL=http://localhost:5001
 
 # Server-side backend URL (used in Server Actions — not exposed to browser)
 BACKEND_URL=http://localhost:5001
@@ -486,7 +486,7 @@ npm install
 
 # Copy environment variables
 cp .env.example .env.local
-# Set NEXT_PUBLIC_STRAPI_URL=http://localhost:5001
+# Set BACKEND_URL=http://localhost:5001
 
 # Start dev server
 npm run dev

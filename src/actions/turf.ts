@@ -6,8 +6,8 @@ const BASE_URL = process.env.BACKEND_URL ?? "http://localhost:5001"
 
 /* -------------------------------------------------------
    CREATE TURF
+   POST /turf
 ------------------------------------------------------- */
-
 export async function createTurfAction(data: {
   name: string
   location: string
@@ -41,8 +41,8 @@ export async function createTurfAction(data: {
 
 /* -------------------------------------------------------
    UPDATE TURF
+   PUT /turf/:id
 ------------------------------------------------------- */
-
 export async function updateTurfAction(
   turfId: number,
   data: {
@@ -78,8 +78,8 @@ export async function updateTurfAction(
 
 /* -------------------------------------------------------
    DELETE (SOFT DELETE) TURF
+   DELETE /turf/:id
 ------------------------------------------------------- */
-
 export async function deleteTurfAction(
   turfId: number
 ): Promise<{ success: true } | { error: string }> {
@@ -89,9 +89,7 @@ export async function deleteTurfAction(
 
     const res = await fetch(`${BASE_URL}/turf/${turfId}`, {
       method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: `Bearer ${token}` },
       cache: "no-store",
     })
 
@@ -107,8 +105,8 @@ export async function deleteTurfAction(
 
 /* -------------------------------------------------------
    ASSIGN TURF ADMIN
+   POST /turf/:id/assign-admin
 ------------------------------------------------------- */
-
 export async function assignTurfAdminAction(
   turfId: number,
   adminId: number
@@ -139,8 +137,8 @@ export async function assignTurfAdminAction(
 
 /* -------------------------------------------------------
    UPDATE TURF STATUS (ACTIVATE / DEACTIVATE)
+   PUT /turf/:id/status
 ------------------------------------------------------- */
-
 export async function updateTurfStatusAction(
   turfId: number,
   isActive: boolean

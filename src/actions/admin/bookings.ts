@@ -1,24 +1,30 @@
 'use server'
 
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 const BASE_URL = process.env.BACKEND_URL ?? "http://localhost:5001"
+
+async function getToken() {
+  const token = (await cookies()).get("session_token")?.value
+  if (!token) redirect("/login")
+  return token
+}
 
 type UpdateBookingStatusResponse =
   | { success: true; booking: unknown }
   | { error: string }
 
+/* -------------------------------------------------------
+   UPDATE BOOKING STATUS
+   PATCH /admin/bookings/:id/status
+------------------------------------------------------- */
 export async function updateBookingStatusAction(
   bookingId: number,
   status: "CONFIRMED" | "CANCELLED" | "REFUNDED"
 ): Promise<UpdateBookingStatusResponse> {
   try {
-    const cookieStore = await cookies()
-    const token = cookieStore.get("session_token")?.value
-
-    if (!token) {
-      return { error: "Unauthorized. Please login again." }
-    }
+    const token = await getToken()
 
     const res = await fetch(
       `${BASE_URL}/admin/bookings/${bookingId}/status`,
